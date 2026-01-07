@@ -44,5 +44,44 @@ body {
     cursor: pointer;
     font-size: 16px;
     transform: 0.3;
+    background-color: #2f49f0;
 }
 
+.weather-icon img {
+    width: 110px;
+    margin: 20px 0;
+}
+
+.temp {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.city {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.details {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.col {
+    background: #f4f4ff;
+    padding: 15px;
+    border-radius: 15px;
+    width: 48%;
+}
+.col-img {
+    width: 36px;
+}
+
+.humidity,
+.wind {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 5px;
+}
