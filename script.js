@@ -5,4 +5,6 @@ async function getWether() {
     alert('Please enter a city name');
     return;
    } 
+
+   let geoURL = `https://geocoding-api.open-meteo.com/v1/search?name=${city}`;
 }
