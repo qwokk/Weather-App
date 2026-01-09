@@ -14,5 +14,35 @@ async function getWeather() {
     alert("city not found");
     return;
    }
-   console.log(geoData);
+
+   let { latitude, longitude, name } = geoData.results[0];
+   console.log(latitude);
+   console.log(longitude);
+   console.log(name);
+
+   let weatherURL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&hourly=relative_humidity_2m`;
+   let weatherData = await fetch(weatherURL).then((res) => res.json());
+   let w = weatherData.current_weather;
+   document.getElementById('city').innerText = name;
+   document.getElementById('temp').innerText = w.temperature + "°C";
+   document.getElementById('city').innerText = w.windspeed + "km/h";
+   
+   let currentHour = new Date().getHours();
+   let humidity = weatherData.hourly.relative_humidity_2m[currentHour];
+   document.getElementById('humidity').innerText = humidity + "%";
+
+   let iconMap = {
+        0: "/images/sun.png",
+        1: "/images/partly-cloudy-day.png",
+        2: "/images/cloud.png",
+        45: "/images/fog-day.png",
+        48: "/images/fog-night.png",
+        51: "/images/rain.png",
+        61: "/images/rain.png",
+        71: "/images/snow.png",
+        95: "/images/store.png",
+   };
+
+   document.getElementById('weatherIcon').src = 
+    iconMap[w.weathercode] || iconMap[0];
 }
